@@ -3,8 +3,9 @@ ENV DEBIAN_FRONTEND=dialog
 
 
 RUN apt-get update \
-# && apt-get install -y software-properties-common \
-# && add-apt-repository -y ppa:kisak/kisak-mesa \
+# Needed for OpenGL fix for Rviz to display
+ && apt-get install -y software-properties-common \
+ && add-apt-repository -y ppa:kisak/kisak-mesa \ 
  && apt update \ 
  && apt -y upgrade 
 
@@ -14,14 +15,20 @@ RUN apt-get install -y \
   ros-rolling-xacro \
   ros-rolling-joint-state-publisher \
   ros-rolling-srdfdom \
+  # Franka
+#  ros-rolling-libfranka \
   # Packages for moveit
+  ros-rolling-controller-interface \
+  ros-rolling-realtime-tools \
+  ros-rolling-control-toolbox \
+  ros-rolling-joint-state-publisher-gui \
 #  ros-rolling-object-recognition-msgs \
 #  ros-rolling-octomap-msgs \
 #  ros-rolling-ros-testing \
 #  ros-rolling-eigen-stl-containers \
 #  ros-rolling-generate-parameter-library \
 #  libfcl-dev \
-#  ros-rolling-geometric-shapes \
+  ros-rolling-geometric-shapes \
 #  ros-rolling-ruckig \
 #  ros-rolling-control-msgs \
 #  ros-rolling-controller-manager-msgs \
@@ -32,9 +39,9 @@ RUN apt-get install -y \
 #  libompl-dev \
 #  ros-rolling-control-toolbox \
 #  ros-rolling-launch-param-builder \
-#  ros-rolling-controller-manager \
+  ros-rolling-controller-manager \
 #  ros-rolling-joint-state-broadcaster \
-#  ros-rolling-joint-trajectory-controller \
+  ros-rolling-joint-trajectory-controller \
   && rm -rf /var/lib/apt/lists/* 
 
 RUN mkdir /src && mkdir /src/dexter_ws

@@ -6,3 +6,4 @@
 - git: {local-name: tiago_description_calibration, uri: 'git@github.com:pal-robotics/tiago_description_calibration.git', version: 'foxy-devel'}
 - git: {local-name: tiago_moveit_config, uri: 'git@github.com:pal-robotics/tiago_moveit_config.git', version: 'foxy-devel'}
 - git: {local-name: launch_pal, uri: 'git@github.com:pal-robotics/launch_pal.git', version: 'master'}
+- git: {local-name: franka_ros2, uri: 'git@github.com:frankaemika/franka_ros2.git', version: 'develop'}
