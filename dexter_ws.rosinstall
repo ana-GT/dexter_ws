@@ -3,8 +3,10 @@
 - git: {local-name: pmb2_robot, uri: 'git@github.com:pal-robotics/pmb2_robot.git', version: 'galactic-devel'}
 - git: {local-name: tiago_robot, uri: 'git@github.com:pal-robotics/tiago_robot.git', version: 'galactic-devel'}
 - git: {local-name: hey5_description, uri: 'git@github.com:pal-robotics/hey5_description.git', version: 'foxy-devel'}
+- git: {local-name: pal_gripper, uri: 'git@github.com:pal-robotics/pal_gripper.git', version: 'humble-devel'}
 - git: {local-name: tiago_description_calibration, uri: 'git@github.com:pal-robotics/tiago_description_calibration.git', version: 'foxy-devel'}
 - git: {local-name: tiago_moveit_config, uri: 'git@github.com:pal-robotics/tiago_moveit_config.git', version: 'foxy-devel'}
 - git: {local-name: launch_pal, uri: 'git@github.com:pal-robotics/launch_pal.git', version: 'master'}
 - git: {local-name: franka_ros2, uri: 'git@github.com:frankaemika/franka_ros2.git', version: 'develop'}
 - git: {local-name: fetch_ros, uri: 'git@github.com:sensible-robotics/fetch_ros.git', version: 'galactic-devel'}
+- git: {local-name: yumi, uri: 'git@github.com:traclabs/yumi.git', version: 'galactic-devel'}
