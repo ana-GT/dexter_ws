@@ -1,7 +1,7 @@
 name: Create dexter_ws docker image
 
 on:
-#  workflow_dispatch:
+  workflow_dispatch:
   
   pull_request:
     branches:
