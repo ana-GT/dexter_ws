@@ -1,0 +1,54 @@
+repositories:
+
+  trac_ik:
+    type: git
+    url: git@bitbucket.org:traclabs/trac_ik.git
+    version: rolling-devel
+  placer:  
+     type: git      
+     url: git@github.com:ana-gt/placer.git
+     version: humble-devel
+  pmb2_robot: 
+    type: git
+    url: git@github.com:pal-robotics/pmb2_robot.git
+    version: galactic-devel
+  tiago_robot: 
+    type: git
+    url: git@github.com:pal-robotics/tiago_robot.git
+    version: galactic-devel
+  hey5_description:
+    type: git 
+    url: git@github.com:pal-robotics/hey5_description.git
+    version: foxy-devel
+  pal_gripper:
+    type: git   
+     url: git@github.com:pal-robotics/pal_gripper.git
+     version: humble-devel    
+  tiago_description_calibration:
+    type: git   
+    uri: git@github.com:pal-robotics/tiago_description_calibration.git
+    version: foxy-devel
+  tiago_moveit_config:
+    type: git    
+    url: git@github.com:pal-robotics/tiago_moveit_config.git
+    version: foxy-devel
+  launch_pal: 
+    type: git   
+    url: git@github.com:pal-robotics/launch_pal.git
+    version: master
+  franka_ros2:
+    type: git    
+     url: git@github.com:frankaemika/franka_ros2.git
+     version: develop
+  fetch_ros:
+    type: git    
+     url: git@github.com:sensible-robotics/fetch_ros.git
+     version: galactic-devel
+  yumi:
+    type: git
+    url: git@github.com:traclabs/yumi.git
+    version: galactic-devel
+  reachability_tools:
+    type: git     
+    url: git@github.com:ana-GT/reachability_tools.git
+    version: devel
