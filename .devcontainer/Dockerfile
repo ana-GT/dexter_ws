@@ -57,8 +57,10 @@ RUN rosdep update && \
 # Build workspace
 RUN \
     source /opt/ros/rolling/setup.bash && \
-    colcon build  && \ 
+    colcon build  && \
+   
+RUN touch /home/$USERNAME/dexter_entrypoint.sh     
     # Update entrypoint to source our new workspace && \
-    echo -e '#!/bin/bash \nsource "/home/vscode/dexter_ws/install/setup.bash"\nexec "$@"' > /dexter_entrypoint.sh
+RUN  echo -e '#!/bin/bash \nsource "/home/vscode/dexter_ws/install/setup.bash"\nexec "$@"' > /home/$USERNAME/dexter_entrypoint.sh
 
 ENTRYPOINT ["/dexter_entrypoint.sh"]
