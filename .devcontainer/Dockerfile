@@ -55,7 +55,7 @@ ARG SRC_DIR="src"
 COPY --chown=$USERNAME:$USERNAME $SRC_DIR src/.
 
 # Install dependencies
-RUN rosdep install --from-paths src --ignore-src --default-yes -r || true
+RUN sudo rosdep install --from-paths src --ignore-src --default-yes -r || true
 
 # Build workspace
 RUN \
