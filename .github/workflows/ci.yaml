@@ -53,6 +53,7 @@ jobs:
         id: build-and-push
         uses: docker/build-push-action@v5
         with:
+          build-args: SRC_DIR=src
           context: ./.devcontainer
           file: ./.devcontainer/Dockerfile
         
