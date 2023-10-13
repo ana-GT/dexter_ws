@@ -12,9 +12,6 @@ RUN groupadd --gid $USER_GID $USERNAME \
   && echo $USERNAME ALLL=\(root\) NOPASSWD:ALL > /etc/sudoers.d/$USERNAME \
   && chmod 0440 /etc/sudoers.d/$USERNAME
 
-# Set user from root to non-root
-USER $USERNAME
-
 # Set bash shell
 SHELL ["/bin/bash", "-c"]
 
@@ -39,6 +36,9 @@ RUN apt-get install -y \
   ros-rolling-controller-manager \
   ros-rolling-joint-trajectory-controller \
   && rm -rf /var/lib/apt/lists/* 
+
+# Set user from root to non-root
+USER $USERNAME
 
 # Rosdep update
 RUN rosdep update
