@@ -9,7 +9,7 @@ RUN groupadd --gid $USER_GID $USERNAME \
   && useradd -s /bin/bash --uid $USER_UID --gid $USER_GID -m $USERNAME \
   && apt-get update \
   && apt-get install -y sudo \
-  && echo $USERNAME ALLL=\(root\) NOPASSWD:ALL > /etc/sudoers.d/$USERNAME \
+  && echo $USERNAME ALL=\(root\) NOPASSWD:ALL > /etc/sudoers.d/$USERNAME \
   && chmod 0440 /etc/sudoers.d/$USERNAME
 
 # Set bash shell
@@ -39,6 +39,9 @@ RUN apt-get install -y \
 #   \
 #  && rm -rf /var/lib/apt/lists/* 
 
+# Set user from root to non-root
+USER $USERNAME
+
 # Disable StrictHostKeyChecking
 ENV GIT_SSH_COMMAND="ssh -o StrictHostKeyChecking=no"
 
@@ -51,9 +54,6 @@ COPY --chown=$USERNAME:$USERNAME $SRC_DIR src/.
 # Install dependencies
 RUN rosdep update && \
     rosdep install --from-paths src --ignore-src --default-yes -r || true
-
-# Set user from root to non-root
-USER $USERNAME
 
 
 # Build workspace
