@@ -55,6 +55,7 @@ COPY --chown=$USERNAME:$USERNAME $SRC_DIR src/.
 RUN rosdep update && \
     rosdep install --from-paths src --ignore-src --default-yes -r || true
 
+
 # Build workspace
 RUN \
     source /opt/ros/rolling/setup.bash && \
