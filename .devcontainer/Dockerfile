@@ -53,7 +53,7 @@ ARG SRC_DIR="src"
 COPY --chown=$USERNAME:$USERNAME $SRC_DIR src/.
 
 # Install dependencies
-RUN rosdep install --from-paths --ignore-src --default-yes -r || true
+RUN rosdep install --from-paths src --ignore-src --default-yes -r || true
 
 # Build workspace
 RUN source /opt/ros/rolling/setup.bash 
