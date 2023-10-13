@@ -58,7 +58,7 @@ RUN rosdep update && \
 RUN \
     source /opt/ros/rolling/setup.bash && \
     colcon build  && \ 
-    # Update entrypoint to source our new workspace
-    sed -i "s#/opt/ros/rolling/setup.bash#/home/$USERNAME/dexter_ws/install/setup.bash#g" /dexter_entrypoint.sh
+    # Update entrypoint to source our new workspace && \
+    echo -e '#!/bin/bash \nsource "/home/vscode/dexter_ws/install/setup.bash"\nexec "$@"' > /dexter_entrypoint.sh
 
 ENTRYPOINT ["/dexter_entrypoint.sh"]
