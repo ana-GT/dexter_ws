@@ -63,7 +63,7 @@ RUN \
 
 # Clear apt-cache to reduce image size
 RUN \ 
-    rm -rf /var/lib/apt/lists/*
+    sudo rm -rf /var/lib/apt/lists/*
 
 # Sourcing the workspace
 #RUN echo "source /home/$USERNAME/dexter_ws/install/setup.bash" >> /home/$USERNAME/.bashrc
