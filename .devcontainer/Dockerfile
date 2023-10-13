@@ -57,13 +57,13 @@ RUN rosdep update && \
 
 
 # Build workspace
-RUN \
-    source /opt/ros/rolling/setup.bash && \
-    colcon build --symlink-install
+#RUN \
+#    source /opt/ros/rolling/setup.bash && \
+#    colcon build --symlink-install
 
 # Clear apt-cache to reduce image size
-RUN \ 
-    rm -rf /var/lib/apt/lists/*
+#RUN \ 
+#    rm -rf /var/lib/apt/lists/*
 
 # Sourcing the workspace
 #RUN echo "source /home/$USERNAME/dexter_ws/install/setup.bash" >> /home/$USERNAME/.bashrc
