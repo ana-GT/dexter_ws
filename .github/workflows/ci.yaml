@@ -47,6 +47,12 @@ jobs:
           pip3 install vcstool
           mkdir src
           vcs import src < dexter_ws.repos
+          touch src/trac_ik/trac_ik_kinematics_plugin/COLCON_IGNORE
+          touch src/franka_ros2/joint_effort_trajectory_controller/COLCON_IGNORE
+          touch src/franka_ros2/franka_hardware/COLCON_IGNORE 
+          touch src/franka_ros2/franka_gripper/COLCON_IGNORE
+          touch src/franka_ros2/franka_example_controllers/COLCON_IGNORE
+          touch src/franka_ros2/franka_moveit_config/COLCON_IGNORE
           
       # Build and push docker imag with buildx
       - name: Build and push Docker image
