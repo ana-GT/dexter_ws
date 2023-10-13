@@ -57,10 +57,10 @@ RUN rosdep install --from-paths --ignore-src --default-yes -r || true
 
 # Build workspace
 RUN source /opt/ros/rolling/setup.bash 
-RUN colcon build --symlink-install
+#RUN colcon build --symlink-install
 
 # Sourcing the workspace
-RUN echo "source /home/$USERNAME/dexter_ws/install/setup.bash" >> /home/$USERNAME/.bashrc
+#RUN echo "source /home/$USERNAME/dexter_ws/install/setup.bash" >> /home/$USERNAME/.bashrc
 
 #  ros-rolling-libfranka \
 #  ros-rolling-object-recognition-msgs \
