@@ -59,7 +59,7 @@ RUN rosdep update && \
 # Build workspace
 RUN \
     source /opt/ros/rolling/setup.bash && \
-    colcon build --symlink-install
+    colcon build
 
 # Clear apt-cache to reduce image size
 RUN \ 
