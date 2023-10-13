@@ -36,8 +36,6 @@ RUN apt-get install -y \
   ros-rolling-controller-manager \
   ros-rolling-joint-trajectory-controller
 
-#   \
-#  && rm -rf /var/lib/apt/lists/* 
 
 # Set user from root to non-root
 USER $USERNAME
@@ -53,37 +51,14 @@ COPY --chown=$USERNAME:$USERNAME $SRC_DIR src/.
 
 # Install dependencies
 RUN rosdep update && \
-    rosdep install --from-paths src --ignore-src --default-yes -r || true
-
+    rosdep install --from-paths src --ignore-src --default-yes -r || true && \
+    sudo rm -rf /var/lib/apt/lists/*
 
 # Build workspace
 RUN \
     source /opt/ros/rolling/setup.bash && \
-    colcon build
+    colcon build  && \ 
+    # Update entrypoint to source our new workspace
+    sed -i "s#/opt/ros/rolling/setup.bash#/home/$USERNAME/dexter_ws/install/setup.bash#g" /dexter_entrypoint.sh
 
-# Clear apt-cache to reduce image size
-RUN \ 
-    sudo rm -rf /var/lib/apt/lists/*
-
-# Sourcing the workspace
-#RUN echo "source /home/$USERNAME/dexter_ws/install/setup.bash" >> /home/$USERNAME/.bashrc
-
-#  ros-rolling-libfranka \
-#  ros-rolling-object-recognition-msgs \
-#  ros-rolling-octomap-msgs \
-#  ros-rolling-ros-testing \
-#  ros-rolling-eigen-stl-containers \
-#  ros-rolling-generate-parameter-library \
-#  libfcl-dev \
-#  ros-rolling-ruckig \
-#  ros-rolling-control-msgs \
-#  ros-rolling-controller-manager-msgs \
-#  ros-rolling-stomp \
-#  freeglut3-dev \
-#  ros-rolling-graph-msgs \
-#  ros-rolling-warehouse-ros \
-#  libompl-dev \
-#  ros-rolling-control-toolbox \
-#  ros-rolling-launch-param-builder \
-#  ros-rolling-joint-state-broadcaster \
-
+ENTRYPOINT ["/dexter_entrypoint.sh"]
