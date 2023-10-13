@@ -30,7 +30,13 @@ jobs:
       # Set up docker buildx (latest build magic)       
       - name: Set up docker buildx
         uses: docker/setup-buildx-action@v3
-         
+      
+      # Extract metadata for docker
+      - name: Extract Docker metadata
+        id: meta
+        uses: docker/metadata-action@v5
+        with:
+          images: ${{env.REGISTRY}}/${{env.IMAGE_NAME}}   
          
       # Set up SSH key clone private repositories
       - name: Configure SSH
@@ -62,4 +68,8 @@ jobs:
           build-args: SRC_DIR=src
           context: .
           file: ./.devcontainer/Dockerfile
+          push: ${{github.event_name != 'pull_request' }}
+          tags: ${{steps.meta.outputs.tags}}
+          labels: ${{steps.meta.outputs.labels}}
+          no-cache: true
         
