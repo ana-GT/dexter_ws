@@ -34,8 +34,10 @@ RUN apt-get install -y \
   ros-rolling-joint-state-publisher-gui \
   ros-rolling-geometric-shapes \
   ros-rolling-controller-manager \
-  ros-rolling-joint-trajectory-controller \
-  && rm -rf /var/lib/apt/lists/* 
+  ros-rolling-joint-trajectory-controller
+
+#   \
+#  && rm -rf /var/lib/apt/lists/* 
 
 # Set user from root to non-root
 USER $USERNAME
@@ -56,8 +58,13 @@ COPY --chown=$USERNAME:$USERNAME $SRC_DIR src/.
 RUN rosdep install --from-paths src --ignore-src --default-yes -r || true
 
 # Build workspace
-RUN source /opt/ros/rolling/setup.bash 
-#RUN colcon build --symlink-install
+RUN \
+    source /opt/ros/rolling/setup.bash && \
+    colcon build --symlink-install
+
+# Clear apt-cache to reduce image size
+RUN \ 
+    rm -rf /var/lib/apt/lists/*
 
 # Sourcing the workspace
 #RUN echo "source /home/$USERNAME/dexter_ws/install/setup.bash" >> /home/$USERNAME/.bashrc
