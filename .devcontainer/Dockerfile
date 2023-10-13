@@ -1,5 +1,5 @@
 FROM osrf/ros:rolling-desktop
-ENV DEBIAN_FRONTEND=dialog
+ENV DEBIAN_FRONTEND=noninteractive
 
 # Set user
 ARG USERNAME=vscode
@@ -42,9 +42,6 @@ RUN apt-get install -y \
 # Set user from root to non-root
 USER $USERNAME
 
-# Rosdep update
-RUN rosdep update
-
 # Disable StrictHostKeyChecking
 ENV GIT_SSH_COMMAND="ssh -o StrictHostKeyChecking=no"
 
@@ -55,7 +52,8 @@ ARG SRC_DIR="src"
 COPY --chown=$USERNAME:$USERNAME $SRC_DIR src/.
 
 # Install dependencies
-RUN sudo rosdep install --from-paths src --ignore-src --default-yes -r || true
+RUN rosdep update && \
+    rosdep install --from-paths src --ignore-src --default-yes -r || true
 
 # Build workspace
 RUN \
