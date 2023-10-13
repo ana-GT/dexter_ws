@@ -63,4 +63,4 @@ RUN touch /home/$USERNAME/dexter_entrypoint.sh
     # Update entrypoint to source our new workspace && \
 RUN  echo -e '#!/bin/bash \nsource "/home/vscode/dexter_ws/install/setup.bash"\nexec "$@"' > /home/$USERNAME/dexter_entrypoint.sh
 
-ENTRYPOINT ["/home/$USERNAME/dexter_entrypoint.sh"]
+ENTRYPOINT ["/home/vscode/dexter_entrypoint.sh"]
