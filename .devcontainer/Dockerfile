@@ -39,9 +39,6 @@ RUN apt-get install -y \
 #   \
 #  && rm -rf /var/lib/apt/lists/* 
 
-# Set user from root to non-root
-USER $USERNAME
-
 # Disable StrictHostKeyChecking
 ENV GIT_SSH_COMMAND="ssh -o StrictHostKeyChecking=no"
 
@@ -55,15 +52,18 @@ COPY --chown=$USERNAME:$USERNAME $SRC_DIR src/.
 RUN rosdep update && \
     rosdep install --from-paths src --ignore-src --default-yes -r || true
 
+# Set user from root to non-root
+USER $USERNAME
+
 
 # Build workspace
-#RUN \
-#    source /opt/ros/rolling/setup.bash && \
-#    colcon build --symlink-install
+RUN \
+    source /opt/ros/rolling/setup.bash && \
+    colcon build --symlink-install
 
 # Clear apt-cache to reduce image size
-#RUN \ 
-#    rm -rf /var/lib/apt/lists/*
+RUN \ 
+    rm -rf /var/lib/apt/lists/*
 
 # Sourcing the workspace
 #RUN echo "source /home/$USERNAME/dexter_ws/install/setup.bash" >> /home/$USERNAME/.bashrc
