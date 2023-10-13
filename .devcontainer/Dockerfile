@@ -56,8 +56,9 @@ COPY --chown=$USERNAME:$USERNAME $SRC_DIR src/.
 RUN rosdep install --from-paths --ignore-src --default-yes -r || true
 
 # Build workspace
-RUN source /opt/ros/rolling/setup.bash && \
-    colcon build
+RUN source /opt/ros/rolling/setup.sh && \
+    colcon build \
+    --symlink-install
 
 # Sourcing the workspace
 RUN echo "source /home/$USERNAME/dexter_ws/install/setup.bash" >> /home/$USERNAME/.bashrc
