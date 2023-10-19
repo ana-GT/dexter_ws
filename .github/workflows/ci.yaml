@@ -86,8 +86,6 @@ jobs:
           file: ./.devcontainer/Dockerfile
           push: ${{github.event_name != 'pull_request' }}
           tags: ${{steps.meta.outputs.tags}}
-#          labels: ${{steps.meta.outputs.labels}}
-          labels: |
-            org.opencontainers.image.title=dexter_base_test
+          labels: ${{steps.meta.outputs.labels}}
           no-cache: true
         
