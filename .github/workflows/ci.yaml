@@ -46,9 +46,7 @@ jobs:
         id: meta
         uses: docker/metadata-action@v5
         with:
-          images: ${{env.REGISTRY}}/${{env.IMAGE_NAME}}
-          labels: |
-            org.opencontainers.image.title=dexter_base_test          
+          images: ${{env.REGISTRY}}/${{env.IMAGE_NAME}}/base_test
       
       # See labels
       - name: See label and tag
