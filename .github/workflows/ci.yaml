@@ -47,6 +47,12 @@ jobs:
         uses: docker/metadata-action@v5
         with:
           images: ${{env.REGISTRY}}/${{env.IMAGE_NAME}}   
+      
+      # See labels
+      - name: See label and tag
+        run: |
+          echo "** Label: ${{steps.meta.outputs.labels}} !!"
+          echo " ** Tags: ${{steps.meta.outputs.tags}} !!"
          
       # Set up SSH key clone private repositories
       - name: Configure SSH
