@@ -1,4 +1,4 @@
-FROM osrf/ros:rolling-desktop
+FROM osrf/ros:humble-desktop
 ENV DEBIAN_FRONTEND=noninteractive
 
 # Set user
@@ -25,18 +25,23 @@ RUN apt-get update \
 RUN apt-get install -y \
   libnlopt-dev \
   libnlopt-cxx-dev \
-  ros-rolling-xacro \
-  ros-rolling-joint-state-publisher \
-  ros-rolling-srdfdom \
-  ros-rolling-controller-interface \
-  ros-rolling-realtime-tools \
-  ros-rolling-control-toolbox \
-  ros-rolling-joint-state-publisher-gui \
-  ros-rolling-geometric-shapes \
-  ros-rolling-controller-manager \
-  ros-rolling-joint-trajectory-controller
-
-
+  ros-humble-xacro \
+  ros-humble-joint-state-publisher \
+  ros-humble-srdfdom \
+  ros-humble-controller-interface \
+  ros-humble-realtime-tools \
+  ros-humble-control-toolbox \
+  ros-humble-joint-state-publisher-gui \
+  ros-humble-geometric-shapes \
+  ros-humble-controller-manager \
+  ros-humble-joint-trajectory-controller \
+  ros-humble-ros-gz-sim \
+  ros-humble-ros-gz-bridge \
+  ros-humble-robot-localization \
+  ros-humble-interactive-marker-twist-server \
+  ros-humble-twist-mux \
+  ros-humble-joy-linux \
+  ros-humble-imu-tools
 # Set user from root to non-root
 USER $USERNAME
 
@@ -47,7 +52,7 @@ ENV GIT_SSH_COMMAND="ssh -o StrictHostKeyChecking=no"
 RUN mkdir -p /home/$USERNAME/dexter_ws
 WORKDIR /home/$USERNAME/dexter_ws
 ARG SRC_DIR="src"
-COPY --chown=$USERNAME:$USERNAME $SRC_DIR src/.
+#COPY --chown=$USERNAME:$USERNAME $SRC_DIR src/.
 
 # Install dependencies
 RUN rosdep update && \
@@ -56,7 +61,7 @@ RUN rosdep update && \
 
 # Build workspace
 RUN \
-    source /opt/ros/rolling/setup.bash && \
+    source /opt/ros/humble/setup.bash && \
     colcon build
    
 RUN touch /home/$USERNAME/dexter_entrypoint.sh && \
