@@ -39,7 +39,7 @@ repositories:
   franka_ros2:
     type: git    
     url: git@github.com:frankaemika/franka_ros2.git
-    version: develop
+    version: humble
   fetch_ros:
     type: git    
     url: git@github.com:sensible-robotics/fetch_ros.git

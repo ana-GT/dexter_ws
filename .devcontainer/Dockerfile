@@ -41,7 +41,7 @@ RUN apt-get install -y \
   ros-humble-interactive-marker-twist-server \
   ros-humble-twist-mux \
   ros-humble-joy-linux \
-  ros-humble-imu-tools
+  ros-humble-imu-tools 
 # Set user from root to non-root
 USER $USERNAME
 

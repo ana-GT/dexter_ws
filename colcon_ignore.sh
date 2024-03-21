@@ -1,0 +1,30 @@
+#!/bin/bash
+pushd src
+touch ./yumi/gazebo_mimic/COLCON_IGNORE
+touch ./yumi/yumi_hw/COLCON_IGNORE
+touch ./yumi/yumi_control/COLCON_IGNORE
+touch ./yumi/yumi_test_controllers/COLCON_IGNORE
+touch ./yumi/yumi_moveit_config/COLCON_IGNORE
+touch ./yumi/yumi_support/COLCON_IGNORE
+touch ./yumi/yumi_launch/COLCON_IGNORE
+touch ./yumi/yumi_cameras/COLCON_IGNORE
+touch ./trac_ik/trac_ik_python/COLCON_IGNORE
+touch ./trac_ik/trac_ik_kinematics_plugin/COLCON_IGNORE
+touch ./trac_ik/trac_ik_examples/COLCON_IGNORE
+touch ./fetch_ros/fetch_moveit_config/COLCON_IGNORE
+touch ./fetch_ros/fetch_ros/COLCON_IGNORE
+touch ./fetch_ros/fetch_maps/COLCON_IGNORE
+touch ./fetch_ros/fetch_depth_layer/COLCON_IGNORE
+touch ./fetch_ros/fetch_ikfast_plugin/COLCON_IGNORE
+touch ./fetch_ros/fetch_teleop/COLCON_IGNORE
+touch ./fetch_ros/fetch_navigation/COLCON_IGNORE
+touch ./fetch_ros/fetch_calibration/COLCON_IGNORE
+touch ./franka_ros2/franka_gripper/COLCON_IGNORE
+touch ./franka_ros2/franka_hardware/COLCON_IGNORE
+touch ./franka_ros2/franka_moveit_config/COLCON_IGNORE
+touch ./franka_ros2/franka_semantic_components/COLCON_IGNORE
+touch ./franka_ros2/franka_robot_state_broadcaster/COLCON_IGNORE
+touch ./franka_ros2/franka_example_controllers/COLCON_IGNORE
+touch ./pal_gripper/pal_parallel_gripper_wrapper/COLCON_IGNORE
+touch ./pal_gripper/pal_gripper_gazebo/COLCON_IGNORE
+popd
